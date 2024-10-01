@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+const SHOCKPrimColor = Color.fromARGB(255, 225, 74, 109);
 const SHPrimaryColor = Color(0xFF894b7d);
 const AppSecondaryColor = Color(0xFF7E57C2);
 const AppScaffoldDarkColor = Color.fromARGB(255, 27, 36, 45);

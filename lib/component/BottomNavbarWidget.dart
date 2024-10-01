@@ -142,7 +142,7 @@ class BottomNavyBarItem {
   BottomNavyBarItem({
     required this.icon,
     required this.title,
-    this.activeColor = AppSecondaryColor,
+    this.activeColor = SHOCKPrimColor,
     this.textAlign = TextAlign.center,
     this.inactiveColor = AppScaffoldDarkColor,
   });
