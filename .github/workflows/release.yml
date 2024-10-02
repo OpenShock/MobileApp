@@ -17,8 +17,6 @@ jobs:
           java-version: '17'
 
       - uses: subosito/flutter-action@v2
-        with:
-          flutter-version: 'stable'
 
       # Install dependencies
       - name: Install Flutter dependencies
