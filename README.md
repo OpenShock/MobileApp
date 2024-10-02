@@ -2,6 +2,10 @@
 
 The OpenShock mobile app is built using **Flutter**, a cross-platform UI toolkit that enables a seamless experience on both iOS and Android devices. OpenShock allows users to manage and control their OpenShock-enabled devices efficiently, providing a responsive and high-performance interface.
 
+# Download
+
+You can download the app from the [Google play store](https://play.google.com/store/apps/details?id=app.openshock.mobile)
+
 ## Tech Stack
 
 - **Flutter**: Cross-platform UI framework to build a native mobile app for iOS and Android from a single codebase.
@@ -24,8 +28,8 @@ Make sure you have the following installed on your development environment:
 
 1. **Clone the Repository**  
    ```
-   git clone https://github.com/yourusername/OpenShock.git
-   cd OpenShock
+   git clone https://github.com/OpenShock/MobileApp
+   cd MobileApp
    ```
 
 2. **Install Dependencies**  
@@ -43,7 +47,7 @@ Make sure you have the following installed on your development environment:
 4. **Build for Production**  
    To build the app for production, use:
    ```
-   flutter build apk   # Android
+   flutter build appbundle   # Android
    flutter build ios   # iOS
    ```
 
@@ -58,7 +62,7 @@ Make sure you have the following installed on your development environment:
    - Follow the existing code style and structure, keeping your code clean and modular.
 4. **Submit a Pull Request**: Once you've completed your changes, submit a pull request for review.
 
-Feel free to report issues or request new features using the [Issues](https://github.com/yourusername/OpenShock/issues) tab in GitHub.
+Feel free to report issues or request new features using the [Issues](https://github.com/OpenShock/MobileApp/issues) tab in GitHub.
 
 ---
 
