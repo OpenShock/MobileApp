@@ -9,7 +9,7 @@
 
 
     <application
-        android:label="Open Shock"
+        android:label="OpenShock"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
