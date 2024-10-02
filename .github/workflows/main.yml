@@ -19,9 +19,6 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
       - uses: subosito/flutter-action@v2
-        with:
-          channel: stable
-          flutter-version-file: pubspec.yaml # path to pubspec.yaml
       - run: flutter pub get
       - run: flutter --version
       - run: flutter analyze
@@ -38,9 +35,6 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
       - uses: subosito/flutter-action@v2
-        with:
-          channel: stable
-          flutter-version-file: pubspec.yaml # path to pubspec.yaml
       - run: flutter pub get
       - run: flutter clean
       - run: flutter build appbundle --debug
