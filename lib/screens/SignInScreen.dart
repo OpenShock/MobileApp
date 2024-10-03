@@ -14,8 +14,9 @@ class SignInScreen extends StatefulWidget {
 }
 
 class SignInScreenState extends State<SignInScreen> {
-  TextEditingController apiKeyController = TextEditingController();
   TextEditingController apiHostController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
 
   @override
   void initState() {
@@ -36,14 +37,14 @@ class SignInScreenState extends State<SignInScreen> {
   }
 
   Future<bool> checkAPIToken() async {
-    Openshockapi api =
-        new Openshockapi(apiHostController.text, apiKeyController.text);
+    Openshockapi api = new Openshockapi(apiHostController.text, "");
 
-    bool loggedIn = await api.validateKey();
+    bool loggedIn =
+        await api.login(emailController.text, passwordController.text);
 
     if (loggedIn) {
       final storage = new FlutterSecureStorage();
-      await storage.write(key: "api_token", value: apiKeyController.text);
+      await storage.write(key: "api_token", value: api.api_key);
       await storage.write(key: "api_host", value: apiHostController.text);
       clientApi = api;
       user = await api.getSelfUser();
@@ -54,7 +55,8 @@ class SignInScreenState extends State<SignInScreen> {
 
   @override
   void dispose() {
-    apiKeyController.dispose();
+    passwordController.dispose();
+    emailController.dispose();
     apiHostController.dispose();
     super.dispose();
   }
@@ -102,26 +104,23 @@ class SignInScreenState extends State<SignInScreen> {
                       AppTextField(
                         textStyle: primaryTextStyle(color: white),
                         cursorColor: white,
-                        textFieldType: TextFieldType.PASSWORD,
+                        textFieldType: TextFieldType.EMAIL,
                         suffixIconColor: white,
-                        controller: apiKeyController,
-                        suffix:
-                            Icon(Icons.remove_red_eye_rounded, color: white),
-                        decoration: buildSHInputDecoration('API Key',
+                        controller: emailController,
+                        decoration: buildSHInputDecoration('Email',
                             textColor: Colors.grey),
                       ),
                       16.height,
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: Text('Create API Key',
-                                style: boldTextStyle(color: white),
-                                textAlign: TextAlign.end)
-                            .onTap(
-                          () {
-                            launchUrl(Uri.parse(
-                                'https://next.openshock.app/settings/api-tokens'));
-                          },
-                        ),
+                      AppTextField(
+                        textStyle: primaryTextStyle(color: white),
+                        cursorColor: white,
+                        textFieldType: TextFieldType.PASSWORD,
+                        suffixIconColor: white,
+                        controller: passwordController,
+                        suffix:
+                            Icon(Icons.remove_red_eye_rounded, color: white),
+                        decoration: buildSHInputDecoration('Password',
+                            textColor: Colors.grey),
                       ),
                       80.height,
                       button(
@@ -139,7 +138,7 @@ class SignInScreenState extends State<SignInScreen> {
                               builder: (_) => AlertDialog(
                                 title: Text('Login Failed'),
                                 content: Text(
-                                  'Invalid API Key or Host',
+                                  'Invalid Login or Host',
                                 ),
                               ),
                             );
