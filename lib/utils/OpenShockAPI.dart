@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:open_shock/model/shockobjs/OwnHub.dart';
 import 'package:open_shock/model/shockobjs/SelfUser.dart';
@@ -16,6 +18,47 @@ class Openshockapi {
     }
 
     return Future.value(res.containsKey("data"));
+  }
+
+  // New login function that accepts username and password
+  Future<bool> login(String username, String password) async {
+    Map<String, dynamic>? parsedJson = await doRequest(
+      "POST",
+      "/1/account/login",
+      jsonEncode({"email": username, "password": password}),
+      false, // No need to authenticate for login
+    );
+
+    if (parsedJson == null) {
+      return Future.value(false); // If no response or error occurs
+    }
+
+    String msg = parsedJson['message'];
+
+    if (msg.contains("Successfully logged in")) {
+      // Extract the set-cookie header and get the openShockSession value
+      var dio = Dio();
+      var response = await dio.post(
+        this.api_host + "/1/account/login",
+        data: {"email": username, "password": password},
+        options: Options(
+          headers: {'Content-Type': 'application/json'},
+        ),
+      );
+
+      if (response.headers.map.containsKey("set-cookie")) {
+        var cookies = response.headers['set-cookie'];
+        for (var cookie in cookies!) {
+          if (cookie.startsWith("openShockSession=")) {
+            this.api_key = cookie.split(";")[0].split("=")[1];
+            break;
+          }
+        }
+        return Future.value(true); // Login successful and session key set
+      }
+    }
+
+    return Future.value(false); // Login failed
   }
 
   Future<SelfUser> getSelfUser() async {
@@ -51,11 +94,17 @@ class Openshockapi {
   }
 
   Future<Map<String, dynamic>?> doRequest(
-      String method, String endpoint, String data) async {
+      String method, String endpoint, String data,
+      [bool authenticate = true]) async {
     var headers = {
-      'OpenShockToken': this.api_key,
       'Content-Type': 'application/json',
     };
+
+    if (authenticate) {
+      headers.addAll({
+        'openShockSession': this.api_key,
+      });
+    }
 
     var dio = Dio();
 
@@ -108,12 +157,21 @@ class Openshockapi {
   }
 
   Future<bool> sendControlSignal(
-      String id, int int, int dur, String action) async {
-    //{\"shocks\": [{\"id\": \"0e83b6b4-e1ac-4cc8-a583-efd0f5704099\",\"type\": \"SHOCK\",\"intensity\": "+String(strength)+",\"duration\": "+String(duration)+"}]}
+      String id, int intensity, int duration, String action) async {
     Map<String, dynamic>? parsedJson = await doRequest(
         "POST",
         "/2/shockers/control",
-        "{\"shocks\": [{\"id\": \"${id}\",\"type\": \"${action}\",\"intensity\": ${int.toString()},\"duration\": ${dur.toString()} }], \"customName\": \"Mobile App\"}");
+        jsonEncode({
+          "shocks": [
+            {
+              "id": id,
+              "type": action,
+              "intensity": intensity,
+              "duration": duration
+            }
+          ],
+          "customName": "Mobile App"
+        }));
     String msg = parsedJson!['message'];
     return Future.value(msg.contains('Successfully'));
   }
