@@ -51,10 +51,9 @@ class SettingScreenState extends State<SettingScreen> {
                     title: 'Edit Profile',
                     textColor: white,
                     onTap: () {
-                      EditProfileScreen().launch(
-                        context,
-                        pageRouteAnimation: PageRouteAnimation.SlideBottomTop,
-                      );
+                      EditProfileScreen().launch(context,
+                          pageRouteAnimation: PageRouteAnimation.SlideBottomTop,
+                          duration: Duration(milliseconds: 150));
                     },
                   ),
                   settIngContainer(
