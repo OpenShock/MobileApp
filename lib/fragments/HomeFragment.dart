@@ -62,7 +62,8 @@ class HomeFragmentState extends State<HomeFragment> {
                     ).cornerRadiusWithClipRRectOnly(bottomLeft: 20).onTap(
                       () {
                         SettingScreen().launch(context,
-                            pageRouteAnimation: PageRouteAnimation.Scale);
+                            pageRouteAnimation: PageRouteAnimation.Scale,
+                            duration: Duration(milliseconds: 150));
                       },
                     ),
                   ),

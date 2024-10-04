@@ -56,6 +56,7 @@ class MyApp extends StatelessWidget {
             : AppThemeData.darkTheme,
         navigatorKey: navigatorKey,
         scrollBehavior: SBehavior(),
+        themeAnimationDuration: Duration(milliseconds: 150),
         supportedLocales: LanguageDataModel.languageLocales(),
         localeResolutionCallback: (locale, supportedLocales) => locale,
       ),
