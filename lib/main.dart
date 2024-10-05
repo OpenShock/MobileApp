@@ -13,7 +13,7 @@ AppStore appStore = AppStore();
 late Openshockapi clientApi; // Declare your global API client object
 
 late SelfUser user; // Declare global user objec
-final appVersion = '1.0.0-BETA';
+final appVersion = '1.0.3';
 
 final storage = new FlutterSecureStorage();
 const isDarkModeOnPref = 'isDarkModeOnPref';
@@ -56,6 +56,7 @@ class MyApp extends StatelessWidget {
             : AppThemeData.darkTheme,
         navigatorKey: navigatorKey,
         scrollBehavior: SBehavior(),
+        themeAnimationDuration: Duration(milliseconds: 150),
         supportedLocales: LanguageDataModel.languageLocales(),
         localeResolutionCallback: (locale, supportedLocales) => locale,
       ),
