@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:open_shock/main.dart';
 import 'package:open_shock/screens/DashboardScreen.dart';
+import 'package:open_shock/utils/OpenShockWS.dart';
 
 import '../utils/OpenShockAPI.dart';
 import 'InitalSignScreen.dart';
@@ -48,6 +49,7 @@ class SplashScreenState extends State<SplashScreen> {
 
       if (loggedIn) {
         clientApi = api;
+        clientWs = new OpenshockWS(api.api_host, api.api_key);
         user = await api.getSelfUser();
         goToMenu();
       } else {

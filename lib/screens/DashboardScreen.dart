@@ -5,7 +5,9 @@ import 'package:open_shock/component/BottomNavbarWidget.dart';
 import 'package:open_shock/fragments/CreatePairFragment.dart';
 import 'package:open_shock/fragments/HomeFragment.dart';
 import 'package:open_shock/fragments/SharedUsersFragment.dart';
+import 'package:open_shock/main.dart';
 import 'package:open_shock/utils/AppColors.dart';
+import 'package:open_shock/utils/OpenShockWS.dart';
 
 class DashboardScreen extends StatefulWidget {
   static String tag = '/DashboardScreen';
@@ -26,6 +28,11 @@ class DashboardScreenState extends State<DashboardScreen> {
   void initState() {
     super.initState();
     init();
+
+    clientWs!.startConnection();
+    clientWs!.addMessageHandler('Log', (message) {
+      print(message);
+    });
   }
 
   Future<void> init() async {

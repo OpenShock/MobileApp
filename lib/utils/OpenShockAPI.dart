@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:open_shock/main.dart';
 import 'package:open_shock/model/shockobjs/OwnHub.dart';
 import 'package:open_shock/model/shockobjs/SelfUser.dart';
 import 'package:open_shock/model/shockobjs/SharedUser.dart';
@@ -98,6 +99,7 @@ class Openshockapi {
       [bool authenticate = true]) async {
     var headers = {
       'Content-Type': 'application/json',
+      'User-Agent': GetUserAgent()
     };
 
     if (authenticate) {
