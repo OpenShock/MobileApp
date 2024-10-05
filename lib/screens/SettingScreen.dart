@@ -56,19 +56,16 @@ class SettingScreenState extends State<SettingScreen> {
                           duration: Duration(milliseconds: 150));
                     },
                   ),
-                  settIngContainer(
-                    icon: Icons.person,
-                    title: 'Member',
-                    textColor: white,
-                    onTap: () {},
-                  ),
-                  settIngContainer(
-                      icon: Icons.settings, title: 'Setting', textColor: white),
-                  16.height,
-                  64.height,
-                  64.height,
-                  16.height,
-                  16.height,
+                  // settIngContainer(
+                  //   icon: Icons.person,
+                  //   title: 'Member',
+                  //   textColor: white,
+                  //   onTap: () {},
+                  // ),
+                  // settIngContainer(
+                  //     icon: Icons.settings, title: 'Setting', textColor: white),
+
+                  256.height,
 
                   // settIngContainer(
                   //     icon: Icons.chat,
