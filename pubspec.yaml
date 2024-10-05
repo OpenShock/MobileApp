@@ -23,7 +23,8 @@ dependencies:
   flutter_mobx: ^2.2.1+1
 
   # Smart Home
-  cached_network_image: ^3.4.1
+  syncfusion_flutter_gauges: ^26.2.13
+  cached_network_image: ^3.4.0
   dashed_circle: ^0.0.2
   dotted_line: ^3.2.2
   fl_chart: ^0.69.0
