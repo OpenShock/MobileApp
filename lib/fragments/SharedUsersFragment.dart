@@ -123,6 +123,7 @@ class SharedUsersFragmentState extends State<SharedUsersFragment> {
               code = value;
             },
             decoration: InputDecoration(hintText: "Enter code"),
+            style: TextStyle(color: white),
           ),
           actions: [
             TextButton(
