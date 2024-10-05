@@ -25,14 +25,14 @@ class OwnShocker {
   }
 
   Future<bool> shock(Openshockapi api, int int, int dur) async {
-    return api.sendControlSignal(this.id, int, dur, "SHOCK");
+    return api.sendControlSignal(this.id, int, dur, "Shock");
   }
 
   Future<bool> beep(Openshockapi api, int int, int dur) async {
-    return api.sendControlSignal(this.id, int, dur, "BEEP");
+    return api.sendControlSignal(this.id, int, dur, "Sound");
   }
 
   Future<bool> vibrate(Openshockapi api, int int, int dur) async {
-    return api.sendControlSignal(this.id, int, dur, "VIBRATE");
+    return api.sendControlSignal(this.id, int, dur, "Vibrate");
   }
 }
