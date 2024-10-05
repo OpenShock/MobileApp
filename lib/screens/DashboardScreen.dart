@@ -7,7 +7,6 @@ import 'package:open_shock/fragments/HomeFragment.dart';
 import 'package:open_shock/fragments/SharedUsersFragment.dart';
 import 'package:open_shock/main.dart';
 import 'package:open_shock/utils/AppColors.dart';
-import 'package:open_shock/utils/OpenShockWS.dart';
 
 class DashboardScreen extends StatefulWidget {
   static String tag = '/DashboardScreen';
