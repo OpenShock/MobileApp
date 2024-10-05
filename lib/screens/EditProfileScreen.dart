@@ -23,7 +23,8 @@ class EditProfileScreenState extends State<EditProfileScreen> {
   }
 
   void init() async {
-    //
+    emailController.text = user.email;
+    fNameController.text = user.name;
   }
 
   @override
@@ -32,8 +33,6 @@ class EditProfileScreenState extends State<EditProfileScreen> {
   }
 
   void setValue() {
-    emailController.text = user.email;
-    fNameController.text = user.name;
     setState(() {});
   }
 
@@ -46,7 +45,11 @@ class EditProfileScreenState extends State<EditProfileScreen> {
         width: context.width(),
         text: 'Update',
         onTap: () {
-          setValue();
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+                content: Text(
+                    "This feature is not yet available, please update your details on the website.")),
+          );
         },
       ).paddingSymmetric(horizontal: 16, vertical: 24),
       appBar: appBarWidget(
