@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:nb_utils/nb_utils.dart'; // For styles and colors
 import 'package:open_shock/main.dart';
 import 'package:open_shock/model/shockobjs/SharedUser.dart'; // Import the SharedUser model
