@@ -33,6 +33,7 @@ dependencies:
   url_launcher: ^6.1.11
   json_annotation: ^4.8.1
   signalr_core: ^1.1.2
+  flat_buffers: ^23.5.26
 
 
 dev_dependencies:
