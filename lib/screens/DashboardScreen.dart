@@ -30,9 +30,6 @@ class DashboardScreenState extends State<DashboardScreen> {
     init();
 
     clientWs!.startConnection();
-    clientWs!.addMessageHandler('Log', (message) {
-      print(message);
-    });
   }
 
   Future<void> init() async {
