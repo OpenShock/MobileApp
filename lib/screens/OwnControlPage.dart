@@ -128,14 +128,21 @@ class _OwnControlPageState extends State<OwnControlPage> {
                   ),
                   subtitle: Row(
                     children: [
-                      Icon(actionIcon, color: Colors.white),
+                      Icon(actionIcon, color: SHOCKPrimColor),
                       SizedBox(width: 8),
-                      Expanded(
-                        child: Text(
-                          'Intensity: ${entry.intensity} | Duration: ${entry.duration}s',
-                          style: secondaryTextStyle(color: Colors.grey),
-                        ),
-                      ),
+                      entry.action == 'Sound'
+                          ? Expanded(
+                              child: Text(
+                                'Duration: ${entry.duration}s',
+                                style: secondaryTextStyle(color: Colors.grey),
+                              ),
+                            )
+                          : Expanded(
+                              child: Text(
+                                'Intensity: ${entry.intensity} | Duration: ${entry.duration}s',
+                                style: secondaryTextStyle(color: Colors.grey),
+                              ),
+                            ),
                     ],
                   ),
                 ),
