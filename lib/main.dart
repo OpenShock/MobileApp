@@ -15,7 +15,7 @@ late Openshockapi clientApi; // Declare your global API client object
 OpenshockWS? clientWs;
 
 late SelfUser user; // Declare global user objec
-final appVersion = '1.0.3';
+final appVersion = '1.0.4';
 
 final storage = new FlutterSecureStorage();
 const isDarkModeOnPref = 'isDarkModeOnPref';
