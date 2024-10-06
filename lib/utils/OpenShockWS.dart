@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:open_shock/main.dart';
 import 'package:signalr_core/signalr_core.dart';
 import 'package:http/http.dart' as http;

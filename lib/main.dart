@@ -9,7 +9,6 @@ import 'package:open_shock/store/AppStore.dart';
 import 'package:open_shock/utils/AppTheme.dart';
 import 'package:open_shock/utils/OpenShockAPI.dart';
 import 'package:open_shock/utils/OpenShockWS.dart';
-import 'package:signalr_core/signalr_core.dart';
 
 AppStore appStore = AppStore();
 late Openshockapi clientApi; // Declare your global API client object
