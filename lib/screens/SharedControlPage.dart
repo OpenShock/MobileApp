@@ -225,8 +225,8 @@ class _SharedControlPageState extends State<SharedControlPage> {
                     action: "sound",
                     onPressedAction: () async {
                       // Call the beep method on shockerObj
-                      return await widget.shockerObj.beep(
-                        clientApi,
+                      return await widget.shockerObj.beepWS(
+                        clientWs!,
                         intensity.toInt(), // Pass the intensity
                         (duration * 1000).toInt(), // Pass the duration in ms
                       );
@@ -239,8 +239,8 @@ class _SharedControlPageState extends State<SharedControlPage> {
                     action: "vibrate",
                     onPressedAction: () async {
                       // Call the vibrate method on shockerObj
-                      return await widget.shockerObj.vibrate(
-                        clientApi,
+                      return await widget.shockerObj.vibrateWS(
+                        clientWs!,
                         intensity.toInt(), // Pass the intensity
                         (duration * 1000).toInt(), // Pass the duration in ms
                       );
@@ -253,8 +253,8 @@ class _SharedControlPageState extends State<SharedControlPage> {
                     action: "shock",
                     onPressedAction: () async {
                       // Call the shock method on shockerObj
-                      return await widget.shockerObj.shock(
-                        clientApi,
+                      return await widget.shockerObj.shockWS(
+                        clientWs!,
                         intensity.toInt(), // Pass the intensity
                         (duration * 1000).toInt(), // Pass the duration in ms
                       );

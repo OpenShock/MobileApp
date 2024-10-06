@@ -5,6 +5,7 @@ import 'package:open_shock/component/BottomNavbarWidget.dart';
 import 'package:open_shock/fragments/CreatePairFragment.dart';
 import 'package:open_shock/fragments/HomeFragment.dart';
 import 'package:open_shock/fragments/SharedUsersFragment.dart';
+import 'package:open_shock/main.dart';
 import 'package:open_shock/utils/AppColors.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -26,6 +27,8 @@ class DashboardScreenState extends State<DashboardScreen> {
   void initState() {
     super.initState();
     init();
+
+    clientWs!.startConnection();
   }
 
   Future<void> init() async {

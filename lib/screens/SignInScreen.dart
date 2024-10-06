@@ -6,6 +6,7 @@ import 'package:open_shock/screens/DashboardScreen.dart';
 import 'package:open_shock/utils/OpenShockAPI.dart';
 import 'package:open_shock/utils/AppColors.dart';
 import 'package:open_shock/utils/AppComman.dart';
+import 'package:open_shock/utils/OpenShockWS.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -47,6 +48,8 @@ class SignInScreenState extends State<SignInScreen> {
       await storage.write(key: "api_token", value: api.api_key);
       await storage.write(key: "api_host", value: apiHostController.text);
       clientApi = api;
+      clientWs = new OpenshockWS(api.api_host, api.api_key);
+
       user = await api.getSelfUser();
     }
 

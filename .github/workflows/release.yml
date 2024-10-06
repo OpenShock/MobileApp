@@ -52,4 +52,9 @@ jobs:
           releaseFiles: build/app/outputs/bundle/release/app-release.aab
           debugSymbols: build/app/intermediates/merged_native_libs/release/out/lib
           track: production
+      - name: Archive android app file.
+        uses: actions/upload-artifact@v4
+        with:
+          name: openshock.aab
+          path: build/app/outputs/bundle/release/app-release.aab
 

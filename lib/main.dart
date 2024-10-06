@@ -8,9 +8,11 @@ import 'package:open_shock/screens/SplashScreen.dart';
 import 'package:open_shock/store/AppStore.dart';
 import 'package:open_shock/utils/AppTheme.dart';
 import 'package:open_shock/utils/OpenShockAPI.dart';
+import 'package:open_shock/utils/OpenShockWS.dart';
 
 AppStore appStore = AppStore();
 late Openshockapi clientApi; // Declare your global API client object
+OpenshockWS? clientWs;
 
 late SelfUser user; // Declare global user objec
 final appVersion = '1.0.3';
@@ -38,6 +40,10 @@ void main() async {
   defaultToastGravityGlobal = ToastGravity.BOTTOM;
 
   runApp(const MyApp());
+}
+
+String GetUserAgent() {
+  return 'OpenShockMobile ${!isMobile ? ' ${platformName()}' : ''}/${appVersion}';
 }
 
 class MyApp extends StatelessWidget {

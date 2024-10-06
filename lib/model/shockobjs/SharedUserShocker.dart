@@ -1,19 +1,16 @@
-import 'package:open_shock/utils/OpenShockAPI.dart';
+import 'BaseShocker.dart';
 
-class SharedUserShocker {
-  final String id;
-  final String name;
-  final bool isPaused;
+class SharedUserShocker extends BaseShocker {
   final Map<String, bool> permissions;
   final Map<String, dynamic> limits;
 
   SharedUserShocker({
-    required this.id,
-    required this.name,
-    required this.isPaused,
+    required String id,
+    required String name,
+    required bool isPaused,
     required this.permissions,
     required this.limits,
-  });
+  }) : super(id: id, name: name, isPaused: isPaused);
 
   factory SharedUserShocker.fromJson(Map<String, dynamic> json) {
     return SharedUserShocker(
@@ -29,17 +26,5 @@ class SharedUserShocker {
     return jsonList
         .map((json) => SharedUserShocker.fromJson(json as Map<String, dynamic>))
         .toList();
-  }
-
-  Future<bool> shock(Openshockapi api, int int, int dur) async {
-    return api.sendControlSignal(this.id, int, dur, "Shock");
-  }
-
-  Future<bool> beep(Openshockapi api, int int, int dur) async {
-    return api.sendControlSignal(this.id, int, dur, "Sound");
-  }
-
-  Future<bool> vibrate(Openshockapi api, int int, int dur) async {
-    return api.sendControlSignal(this.id, int, dur, "Vibrate");
   }
 }
