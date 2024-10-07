@@ -21,6 +21,21 @@ class Openshockapi {
     return Future.value(res.containsKey("data"));
   }
 
+  Future<String> getPairCode(String deviceId) async {
+    Map<String, dynamic>? parsedJson =
+        await doRequest("GET", "/1/devices/${deviceId}/pair", "");
+
+    if (parsedJson == null) {
+      return Future.value(""); // If no response or error occurs
+    }
+
+    String msg = parsedJson['message'];
+    if (msg == "") {
+      return Future.value(parsedJson['data']);
+    }
+    return Future.value("");
+  }
+
   // New login function that accepts username and password
   Future<bool> login(String username, String password) async {
     Map<String, dynamic>? parsedJson = await doRequest(
