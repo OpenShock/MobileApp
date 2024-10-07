@@ -18,6 +18,7 @@ class SignInScreenState extends State<SignInScreen> {
   TextEditingController apiHostController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController emailController = TextEditingController();
+  bool _passwordVisible = false;
 
   @override
   void initState() {
@@ -115,15 +116,31 @@ class SignInScreenState extends State<SignInScreen> {
                       ),
                       16.height,
                       AppTextField(
-                        textStyle: primaryTextStyle(color: white),
-                        cursorColor: white,
-                        textFieldType: TextFieldType.PASSWORD,
-                        suffixIconColor: white,
+                        textStyle: primaryTextStyle(color: Colors.white),
+                        cursorColor: Colors.white,
+                        textFieldType: _passwordVisible
+                            ? TextFieldType.OTHER
+                            : TextFieldType.PASSWORD,
+                        suffixIconColor: Colors.white,
                         controller: passwordController,
-                        suffix:
-                            Icon(Icons.remove_red_eye_rounded, color: white),
-                        decoration: buildSHInputDecoration('Password',
-                            textColor: Colors.grey),
+                        suffix: InkWell(
+                          onTap: () {
+                            setState(() {
+                              _passwordVisible =
+                                  !_passwordVisible; // Toggle the visibility
+                            });
+                          },
+                          child: Icon(
+                            _passwordVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: Colors.white,
+                          ),
+                        ),
+                        decoration: buildSHInputDecoration(
+                          'Password',
+                          textColor: Colors.grey,
+                        ),
                       ),
                       80.height,
                       button(
