@@ -116,13 +116,28 @@ class SharedUsersFragmentState extends State<SharedUsersFragment> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Enter Share Code'),
+          title: Text(
+            'Enter Share Code',
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
           backgroundColor: AppScaffoldDarkColor,
           content: TextField(
             onChanged: (value) {
               code = value;
             },
-            decoration: InputDecoration(hintText: "Enter code"),
+            decoration: InputDecoration(
+              hintText: "Enter code",
+              hintStyle: new TextStyle(color: white),
+              border: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: SHOCKPrimColor,
+                ),
+              ),
+              labelStyle: new TextStyle(color: white),
+              floatingLabelStyle: new TextStyle(color: white),
+            ),
             style: TextStyle(color: white),
           ),
           actions: [
