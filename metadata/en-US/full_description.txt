@@ -1,0 +1,3 @@
+OpenShock is a powerful mobile application designed for seamless control of shocker devices through wireless hubs. With OpenShock, you can pair hubs, manage multiple shockers, and customize device settings like intensity and duration for vibration, sound, and shock actions. The app features intuitive sliders and buttons for precise control, and real-time logging of actions lets you track your device usage.
+
+OpenShock also simplifies network management by allowing easy pairing to Wi-Fi networks directly through the app, and supports secure connections using flatbuffers over WebSocket for fast and reliable communication. Whether you’re controlling devices locally or remotely, OpenShock delivers a smooth, user-friendly experience to meet all your device control needs.
