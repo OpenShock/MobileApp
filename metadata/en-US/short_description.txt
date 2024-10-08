@@ -1,0 +1,1 @@
+OpenShock is a smart device control app that allows you to manage shocker devices wirelessly. Pair hubs, adjust intensity, and control vibrations and shocks in real-time. Track device actions and optimize control with advanced features like Wi-Fi pairing and flatbuffer communication.
