@@ -25,7 +25,7 @@ jobs:
       - run: flutter test
 
   build_androidBundle:
-    name: Build Flutter App (Android)
+    name: Build Flutter App (Android AAB)
     needs: [flutter_test]
     runs-on: ubuntu-latest
     steps:
@@ -56,8 +56,35 @@ jobs:
         with:
           name: openshock.aab
           path: build/app/outputs/bundle/release/app-release.aab
-      - name: Archive android apk file.
+  build_androidAPK:
+    name: Build Flutter App (Android APK)
+    needs: [flutter_test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - uses: subosito/flutter-action@v2
+      # Prepare Keystore (decode and save it)
+      - name: Decode Keystore
+        run: |
+          echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 -d > ./android/app/key.jks
+
+      # Set up key.properties file
+      - name: Set up key.properties file
+        run: |
+          echo "storePassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" > $GITHUB_WORKSPACE/android/key.properties
+          echo "keyPassword=${{ secrets.ANDROID_KEY_PASSWORD }}" >> $GITHUB_WORKSPACE/android/key.properties
+          echo "keyAlias=${{ secrets.ANDROID_KEY_ALIAS }}" >> $GITHUB_WORKSPACE/android/key.properties
+          echo "storeFile=key.jks" >> $GITHUB_WORKSPACE/android/key.properties
+
+      - run: flutter pub get
+      - run: flutter clean
+      - run: flutter build appbundle
+      - name: Archive android bundle file.
         uses: actions/upload-artifact@v4
         with:
-          name: openshock.aab
+          name: openshock.apk
           path: build/app/outputs/flutter-apk/app-release.apk
