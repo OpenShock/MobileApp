@@ -82,7 +82,7 @@ jobs:
 
       - run: flutter pub get
       - run: flutter clean
-      - run: flutter build appbundle
+      - run: flutter build apk
       - name: Archive android bundle file.
         uses: actions/upload-artifact@v4
         with:
