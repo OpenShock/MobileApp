@@ -67,7 +67,12 @@ android {
     buildTypes {
 
         release {
-            signingConfig signingConfigs.release
+           
+            if (System.getenv("FDROID") != null) {
+                signingConfig = null  
+            }else{
+                signingConfig signingConfigs.release
+            }
         }
     }
 }
